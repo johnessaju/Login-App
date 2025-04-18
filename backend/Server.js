@@ -102,14 +102,14 @@ app.post('/logout', (req, res) => {
   // clear both cookie
   res.clearCookie('accessToken', {
     httpOnly: true,
-    secure: false, // true in production
-    sameSite: 'Lax'
+    secure: true, // true in production
+    sameSite: 'None'
   });
 
   res.clearCookie('refreshToken', {
     httpOnly: true,
-    secure: false,
-    sameSite: 'Lax'
+    secure: true,
+    sameSite: 'None'
   });
 
   res.json({ message: 'Logged out successfully' });
