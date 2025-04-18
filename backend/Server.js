@@ -9,13 +9,14 @@ const AuthenticateToken = require('./AuthenticateToken');
 const users = [{ name: 'Johnes', password: '$2b$10$abc123...' }];
 const JWT_SECRET = process.env.JWT_SECRET;
 const REFRESH_SECRET = process.env.REFRESH_SECRET;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.json());
 app.use(cookieParser()); // used to parse cookies attached to the request
 app.use(
   cors({
-    origin: 'http://localhost:5173', // Change this to your frontend port
+    origin: 'https://login.johnessaju.com/', // Change this to your frontend port
     credentials: true
   })
 );
@@ -84,7 +85,7 @@ app.post('/token', (req, res) => {
     const newAccessToken = jwt.sign({ name: user.name }, JWT_SECRET, {
       expiresIn: '30s'
     });
-// Adding access token to the response
+    // Adding access token to the response
     res.cookie('accessToken', newAccessToken, {
       httpOnly: true,
       secure: false,
@@ -120,6 +121,6 @@ app.get('/welcome', AuthenticateToken, (req, res) => {
   res.json({ username: req.user.name });
 });
 
-app.listen(3000, () => {
-  console.log('Server running on port 3000');
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
