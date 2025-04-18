@@ -54,15 +54,15 @@ app.post('/login', async (req, res) => {
     // Set cookies
     res.cookie('accessToken', accessToken, {
       httpOnly: true,
-      secure: false, // true in production with HTTPS
-      sameSite: 'Lax',
+      secure: True, // true in production with HTTPS
+      sameSite: 'None',
       maxAge: 30 * 1000 // 30 seconds
     });
 
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
-      secure: false,
-      sameSite: 'Lax',
+      secure: true,
+      sameSite: 'None',
       maxAge: 24 * 60 * 60 * 1000 // 1 day
     });
 
