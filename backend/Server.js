@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cookieParser()); // used to parse cookies attached to the request
 app.use(
   cors({
-    origin: 'https://login.johnessaju.com/', // Change this to your frontend port
+    origin: 'https://login.johnessaju.com', // Change this to your frontend port
     credentials: true
   })
 );
