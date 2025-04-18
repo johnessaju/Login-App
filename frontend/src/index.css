@@ -1,0 +1,7 @@
+@import 'tailwindcss';
+
+body {
+  @apply bg-no-repeat bg-cover bg-center min-h-screen; /* Tailwind utilities */
+  background-image: url('/wallpaper.png'); /* Custom background image */
+  color: #ffffff; /* White text color */
+}
